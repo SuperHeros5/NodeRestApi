@@ -59,7 +59,7 @@ router.route('/bears')
 	.post(function(req, res) {
 		
 		 console.log(req.body);
-    
+     var data=req.body;
 	/*	var bear = new Bear();		// create a new instance of the Bear model
 		bear.name = req.body.name;  // set the bears name (comes from the request)
 console.log(req.body.name);
@@ -73,7 +73,7 @@ console.log(req.body.name);
 	res.json({
 "speech": "Barack Hussein Obama II is the 44th and current President of the United States.",
 "displayText": "Barack Hussein Obama II is the 44th and current President of the United States, and the first African American to hold the office. Born in Honolulu, Hawaii, Obama is a graduate of Columbia University   and Harvard Law School, where ",
-"data": {},
+"data": {data},
 "contextOut": [],
 "source": "DuckDuckGo"
 });
