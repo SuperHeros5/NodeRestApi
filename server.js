@@ -59,7 +59,20 @@ router.route('/bears')
 	.post(function(req, res) {
 		
 		 console.log(req.body);
-     var data=req.body;
+   
+    console.log(req.body);
+    	Bear.find(function(err, bears) {
+			if (err)
+				res.send(err);
+		res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {bears},
+"contextOut": [],
+"source": "MongoDb"
+});
+		//	res.json(bears);
+		});
 	/*	var bear = new Bear();		// create a new instance of the Bear model
 		bear.name = req.body.name;  // set the bears name (comes from the request)
 console.log(req.body.name);
@@ -70,14 +83,15 @@ console.log(req.body.name);
 			res.json({ message: 'Bear created!' });
 		});*/
 	//res.json({ message: 'Bear created!' });
-	res.json({
+		
+	/*	res.json({
 "speech": "Barack Hussein Obama II is the 44th and current President of the United States.",
 "displayText": "Barack Hussein Obama II is the 44th and current President of the United States, and the first African American to hold the office. Born in Honolulu, Hawaii, Obama is a graduate of Columbia University   and Harvard Law School, where ",
 "data": {data},
 "contextOut": [],
 "source": "DuckDuckGo"
-});
-		
+});*/
+
 	})
 
 	// get all the bears (accessed at GET http://localhost:8080/api/bears)
