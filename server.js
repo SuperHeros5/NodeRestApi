@@ -68,7 +68,7 @@ router.route('/bears')
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
 "data": {bears},
-"contextOut": [],
+"contextOut": ["busroutes"],
 "source": "MongoDb"
 });
 		//	res.json(bears);
