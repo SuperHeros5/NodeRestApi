@@ -58,8 +58,10 @@ router.route('/bears')
 	// create a bear (accessed at POST http://localhost:8080/api/bears)
 	.post(function(req, res) {
 		
-		 console.log(req.body);
-   var fbdata = {
+		// console.log(req.body);
+	
+	
+  /* var fbdata = {
       attachment: {
         type: "template",
         payload: {
@@ -96,10 +98,40 @@ router.route('/bears')
         }
       }
     };
-    console.log(req.body);
+    console.log(req.body);*/
     	Bear.find(function(err, bears) {
+		var elements = bears.bears;
+		var list=[];
 			if (err)
 				res.send(err);
+		
+	for (var i in elements) {
+  var val = elements[i];
+  var oneelemnt ={
+            title: val.place,
+            subtitle: val.landmark,              
+            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
+            buttons: [{
+              type: "postback",
+              title: "From Adibatla",
+	      payload: "fromadibatla"    
+            }, {
+              type: "postback",
+              title: "To Adibatla",
+              payload: "toadibatla"
+            }]
+          };
+	list.push(oneelemnt);
+}
+		var fbdata = {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: list
+        }
+      }
+    };
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
