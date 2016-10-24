@@ -65,7 +65,7 @@ router.route('/bears')
 			if (err)
 				res.send(err);
 		res.json({
-"speech": "Buses to Adibatla",
+"speech": JSON.stringify(req.body),
 "displayText": JSON.stringify(req.body),
 "data": {bears,"requestbody": req.body},
 "contextOut": [],
