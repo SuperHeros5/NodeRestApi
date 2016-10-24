@@ -65,9 +65,9 @@ router.route('/bears')
 			if (err)
 				res.send(err);
 		res.json({
-"speech": JSON.stringify(req.body),
-"displayText": JSON.stringify(req.body),
-"data": {bears,"requestbody": req.body},
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {bears},
 "contextOut": [],
 "source": "MongoDb"
 });
