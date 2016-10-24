@@ -100,7 +100,7 @@ router.route('/bears')
     };
     console.log(req.body);*/
     	Bear.find(function(err, bears) {
-		var elements = bears.bears;
+		var elements = bears;
 		var list=[];
 			if (err)
 				res.send(err);
