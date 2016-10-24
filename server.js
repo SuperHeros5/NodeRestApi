@@ -67,7 +67,7 @@ router.route('/bears')
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {bears},
+"data": {bears,"facebook": ["HAI","HELLO",{"sender_action":"Buy"},"Bye"]},
 "contextOut": [],
 "source": "MongoDb"
 });
