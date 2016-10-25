@@ -112,11 +112,9 @@ router.route('/bears')
             subtitle: val.landmark,              
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
-               type: "web_url",
-              title: "From Adibatla",
-              url: "http://messengerdemo.parseapp.com/img/touch.png",
-              webview_height_ratio: "tall",
-	            payload: "fromadibatla"      
+                type: "postback",
+              title: "Fromo Adibatla",
+              payload: "FROMadibatla"    
             }, {
               type: "postback",
               title: "To Adibatla",
