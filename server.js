@@ -105,8 +105,9 @@ router.route('/bears')
 			if (err)
 				res.send(err);
 		
-	for (var i=0;i<bears.length;i++) {		
+	for (var i=0;i< bears.length;i++) {		
   var oneelemnt ={
+	   bear: bears,
             title:  "Place "+bears[i].place,
             subtitle: "Landmark "+bears[i].landmark,            
 	   item_url: "https://www.oculus.com/en-us/rift/",
