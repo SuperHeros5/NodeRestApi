@@ -107,8 +107,8 @@ router.route('/bears')
 		
 	for (var i in elements) {
   var val = elements[i];
-  var place = val.place.toString();
-var landmark = val.landmark.toString();		
+  var place = (val.place).toString();
+var landmark = (val.landmark).toString();		
   var oneelemnt ={
             title: place,
             subtitle: landmark,            
