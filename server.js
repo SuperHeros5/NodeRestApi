@@ -107,9 +107,9 @@ router.route('/bears')
 		
 	for (var i=0;i< bears.length;i++) {		
   var oneelemnt ={
-	   bear: bears.length,
-            title:  "Place "+bears.bear[i].place,
-            subtitle: "Landmark "+bears.bear[i].landmark,            
+	   bear: bears[i],
+            title:  "Place "+bears.place,
+            subtitle: "Landmark "+bears.landmark,            
 	   item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
