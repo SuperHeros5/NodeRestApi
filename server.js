@@ -105,9 +105,9 @@ router.route('/bears')
 			if (err)
 				res.send(err);
 		
-	for (var i in bears) {		
+	for (var i=0;i<bears.length;i++) {		
   var oneelemnt ={
-            title:  "Plcae "+bears[i].place,
+            title:  "Place "+bears[i].place,
             subtitle: "Landmark "+bears[i].landmark,            
 	   item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
