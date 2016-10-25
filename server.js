@@ -123,7 +123,9 @@ router.route('/bears')
               payload: "toadibatla"
             }]
           };
+	 if(list.length < 6){
 	list.push(oneelemnt);
+          }
 }
 		list.push({
             title: "rift",
