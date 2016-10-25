@@ -105,11 +105,12 @@ router.route('/bears')
 			if (err)
 				res.send(err);
 		
-	for (var i=0;i< bears.length;i++) {		
+	for (var i=0;i< bears.length;i++) {
+		var element = JSON.parse(bears[i]);
   var oneelemnt ={
-	   bear: bears[i],
-            title:  "Place "+bears[place],
-            subtitle: "Landmark "+bears[landmark],            
+	   bear: element,
+            title:  "Place "+element[place],
+            subtitle: "Landmark "+element[landmark],            
 	   item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
