@@ -106,7 +106,7 @@ router.route('/bears')
 				res.send(err);
 		
 	for (var i=0;i< all.length;i++) {
-		var element = JSON.parse(all[i]);
+		var element = JSON.parse(all[i].toString());
   var oneelemnt ={
 	   bear : element,
             title:  "Place "+element["place"],
