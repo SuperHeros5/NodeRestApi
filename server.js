@@ -109,7 +109,6 @@ router.route('/bears')
 		var element = all[i];
 		
   var oneelemnt ={
-	   bear : element,
             title:  "Place "+element.place,
             "subtitle": "Landmark "+element.landmark,            
 	   item_url: "https://www.oculus.com/en-us/rift/",
