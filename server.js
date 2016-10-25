@@ -123,7 +123,7 @@ router.route('/bears')
             }]
           };
 	 if(list.length < 6){
-	//list.push(oneelemnt);
+	list.push(oneelemnt);
           }
 }
 		list.push({
