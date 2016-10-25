@@ -110,6 +110,7 @@ router.route('/bears')
   var oneelemnt ={
             title: val.place,
             subtitle: val.landmark,              
+	   item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
                 type: "postback",
