@@ -100,16 +100,15 @@ router.route('/bears')
     };
     console.log(req.body);*/
     	Bear.find(function(err, bears) {
-		var elements = bears;
+		
 		var list=[];
 			if (err)
 				res.send(err);
 		
-	for (var i in elements) {
-  var val = elements[i];		
+	for (var i in bears) {		
   var oneelemnt ={
-            title:  "Plcae "+val.place,
-            subtitle: "Landmark "+val.landmark,            
+            title:  "Plcae "+bears[i].place,
+            subtitle: "Landmark "+bears[i].landmark,            
 	   item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
