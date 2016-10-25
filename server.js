@@ -107,9 +107,11 @@ router.route('/bears')
 		
 	for (var i in elements) {
   var val = elements[i];
+  var place = val.place.toString();
+var landmark = val.landmark.toString();		
   var oneelemnt ={
-            title: val.place,
-            subtitle: val.landmark,            
+            title: place,
+            subtitle: landmark,            
 	   item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
