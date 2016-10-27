@@ -114,9 +114,11 @@ router.route('/bears')
 	   item_url: "https://www.oculus.com/en-us/rift/",
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
-                type: "postback",
-              title: "Fromo Adibatla",
-              payload: "FROMadibatla"    
+                type: "web_url",
+              title: "From Adibatla",
+              url: "http://messengerdemo.parseapp.com/img/touch.png",
+              webview_height_ratio: "tall",
+	            payload: "fromadibatla"   
             }, {
               type: "postback",
               title: "To Adibatla",
