@@ -116,8 +116,8 @@ router.route('/bears')
                 type: "web_url",
               title: "From Adibatla",
               url: "http://messengerdemo.parseapp.com/img/touch.png",
-             
-	            payload: "fromadibatla"   
+             webview_height_ratio: "tall",
+	         
             }, {
               type: "postback",
               title: "To Adibatla",
