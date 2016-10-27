@@ -114,10 +114,10 @@ router.route('/bears')
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
              
-		     "type":"web_url",
-                "url":"https://petersfancyapparel.com/classic_white_tshirt",
-                "title":"View Item",
-                "webview_height_ratio":"tall"
+		     type:"web_url",
+                url:"https://petersfancyapparel.com/classic_white_tshirt",
+                title:"View Item",
+                webview_height_ratio:"compact"
 	         
             }, {
               type: "postback",
