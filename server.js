@@ -137,7 +137,7 @@ router.route('/bears')
               type: "web_url",
               url: "https://www.oculus.com/en-us/rift/",
               title: "Open Web URL",
-		  payload: "Payload for first bubble",   
+		   
             }, {
               type: "postback",
               title: "Call Postback",
