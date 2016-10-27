@@ -115,8 +115,8 @@ router.route('/bears')
             buttons: [{
                 type: "web_url",
               title: "From Adibatla",
-              url: "http://messengerdemo.parseapp.com/img/touch.png",
-             webview_height_ratio: "tall",
+              url: "http://busroutesadibatla.herokuapp.com",
+             webview_height_ratio: "tall"
 	         
             }, {
               type: "postback",
