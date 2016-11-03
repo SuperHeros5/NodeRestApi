@@ -32,6 +32,7 @@ console.log(mongoose.connection.readyState);
 var Bear     = require('./bear');
 console.log(port);
 console.log(port);
+//console.log(Bear.toadi);
 // ROUTES FOR OUR API
 // =============================================================================
 
@@ -41,6 +42,8 @@ var router = express.Router();
 // middleware to use for all requests
 router.use(function(req, res, next) {
 	// do logging
+	res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	console.log('Something is happening.');
 	next();
 });
@@ -53,7 +56,7 @@ router.get('/', function(req, res) {
 
 // on routes that end in /bears
 // ----------------------------------------------------
-router.route('/bears')
+router.route('/toadibatla')
 
 	// create a bear (accessed at POST http://localhost:8080/api/bears)
 	.post(function(req, res) {
@@ -99,33 +102,36 @@ router.route('/bears')
       }
     };
     console.log(req.body);*/
-    	Bear.find(function(err, bears) {
-		var all=bears;
+    	Bear.toadi.find(function(err, bears) {
+    	  
+		var elements = bears;
 		var list=[];
 			if (err)
 				res.send(err);
-		
-	for (var i=0;i< all.length;i++) {
-		var element = all[i];
-		
+		//console.log(elements);
+	for (var i in bears) {
+  console.log(bears[i]);
+  
   var oneelemnt ={
-            title:  "Place "+element.place,
-            "subtitle": "Landmark "+element.landmark,          
+    bear : bears[i],
+    title: "place "+(bears[i].place),
+            subtitle: (bears[i].landmark),              
+             item_url: "https://www.oculus.com/en-us/rift/", 
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
-             
-		     type:"web_url",
-                url:"https://petersfancyapparel.com/classic_white_tshirt",
-                title:"View Item",
-                webview_height_ratio:"compact"
-	         
+              type: "web_url",
+              title: "From Adibatla",
+              url: "http://messengerdemo.parseapp.com/img/touch.png",
+              webview_height_ratio: "tall",
+	            payload: "fromadibatla"    
             }, {
               type: "postback",
               title: "To Adibatla",
               payload: "toadibatla"
             }]
           };
-	 if(list.length < 6){
+          
+          if(list.length < 6){
 	list.push(oneelemnt);
           }
 }
@@ -137,15 +143,15 @@ router.route('/bears')
             buttons: [{
               type: "web_url",
               url: "https://www.oculus.com/en-us/rift/",
-              title: "Open Web URL",
-		   
+              title: "Open Web URL"
             }, {
               type: "postback",
               title: "Call Postback",
-              payload: "Payload for second bubble",
+              payload: "Payload for first bubble",
             }],
           }
 		);
+		console.log(list);
 		var fbdata = {
       attachment: {
         type: "template",
@@ -187,22 +193,48 @@ console.log(req.body.name);
 
 	// get all the bears (accessed at GET http://localhost:8080/api/bears)
 	.get(function(req, res) {
-	  
-		Bear.find(function(err, bears) {
+	 // console.log(Bear.toadi);
+	 // res.send(	Bear.toadi);
+	 // res.send("err");
+	 	var buses=[];
+	 	Bear.toadi.find({},'place',function(err, bears) {
+		  //res.send("err"); 
 			if (err)
 				res.send(err);
 
-			res.json(bears);
-		});
+		//	res.json(bears);
+		
+			for(var i in bears ){
+			  buses.push(bears[i].place)
+			}
+			console.log(buses);
+			//res.json(buses);
+		}).limit(100);
+		Bear.toadi.find({},'place',function(err, bears) {
+		  //res.send("err"); 
+			if (err)
+				res.send(err);
+
+			//res.json(bears);
+			
+			for(var i in bears ){
+			  buses.push(bears[i].place)
+			}
+			console.log(buses);
+			res.json(buses.sort());
+		}).skip(100).limit(100);
 	});
+
+
 
 // on routes that end in /bears/:bear_id
 // ----------------------------------------------------
-router.route('/bears/:bear_id')
+router.route('/toadibatla/:bear_id')
 
 	// get the bear with that id
 	.get(function(req, res) {
-		Bear.findById(req.params.bear_id, function(err, bear) {
+	  //res.send(req.params.bear_id);
+		Bear.toadi.findOne({ "place" : req.params.bear_id}, function(err, bear) {
 			if (err)
 				res.send(err);
 			res.json(bear);
@@ -211,7 +243,7 @@ router.route('/bears/:bear_id')
 
 	// update the bear with this id
 	.put(function(req, res) {
-		Bear.findById(req.params.bear_id, function(err, bear) {
+		Bear.toadi.findById(req.params.bear_id, function(err, bear) {
 
 			if (err)
 				res.send(err);
@@ -229,7 +261,7 @@ router.route('/bears/:bear_id')
 
 	// delete the bear with this id
 	.delete(function(req, res) {
-		Bear.remove({
+		Bear.toadi.remove({
 			_id: req.params.bear_id
 		}, function(err, bear) {
 			if (err)
@@ -239,6 +271,16 @@ router.route('/bears/:bear_id')
 		});
 	});
 
+router.route('/fromadibatla/:bear_id')
+	.get(function(req, res) {
+	  //res.send(req.params.bear_id);
+	 
+		Bear.fromadi.findOne({ "place" : req.params.bear_id}, function(err, bear) {
+			if (err)
+				res.send(err);
+			res.json(bear);
+		});
+	});
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
