@@ -94,7 +94,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.resolvedQuery === "FROM_ADIBATLA_BUS"){
 	fbdata={
-  	"text":"Enter your destination"
+  	"text":"Enter your destination followed by -bus (eg:madhapur-bus)"
     };
 		
 		res.json({
@@ -107,7 +107,7 @@ router.route('/toadibatla')
 	}
 	else if(req.body.result.resolvedQuery === "TO_ADIBATLA_BUS"){
 	fbdata={
-  	"text":"Enter your location"
+  	"text":"Enter your location followed by -bus (eg:madhapur-bus)"
   };
 		res.json({
 "speech": "Buses to Adibatla",
@@ -116,7 +116,20 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
-	}else{
+	}else if(req.body.result.parameters.any != ""){
+		fbdata={
+  	"text":"Entered bus"+req.body.result.parameters.any
+    };
+	res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"contextOut": [],
+"source": "MongoDb"
+});
+		
+	}
+	else{
 		
   /* var fbdata = {
       attachment: {
