@@ -94,8 +94,27 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.resolvedQuery === "FROM_ADIBATLA_BUS"){
 	fbdata={
-  	"text":"Enter your destination"
-  };
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Please choose one of the option?",
+        "buttons":[
+          {
+            "type":"postback",
+            "title":"From Adibatla",
+            "payload":"FROM_ADIBATLA_BUS"
+          },
+          {
+            "type":"postback",
+            "title":"To Adibatla",
+            "payload":"TO_ADIBATLA_BUS"
+          }
+        ]
+      }
+      }
+    };
+		
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
