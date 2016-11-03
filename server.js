@@ -116,10 +116,10 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
-	}else if(req.body.result.parameters.busstops != "" && req.body.result.parameters.flag != ""){
+	}else if(req.body.result.parameters.any != "" && req.body.result.parameters.flag != ""){
 		
 		if(req.body.result.parameters.flag === "to"){
-			Bear.toadi.findOne({ "place" : req.body.result.parameters.busstops}, function(err, bear) {
+			Bear.toadi.findOne({ "place" : req.body.result.parameters.any}, function(err, bear) {
 			if (err)
 				res.send(err);
 				fbdata={
@@ -134,7 +134,7 @@ router.route('/toadibatla')
 });
 		});
 		}else if(req.body.result.parameters.flag === "from"){
-			Bear.fromadi.findOne({ "place" : req.body.result.parameters.busstops}, function(err, bear) {
+			Bear.fromadi.findOne({ "place" : req.body.result.parameters.any}, function(err, bear) {
 			if (err)
 				res.send(err);
 				fbdata={
