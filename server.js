@@ -164,8 +164,9 @@ router.route('/toadibatla')
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [req.body],
+//"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"data": {req.body},
+"contextOut": [],
 "source": "MongoDb"
 });
 		//	res.json(bears);
