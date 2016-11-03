@@ -62,7 +62,7 @@ router.route('/toadibatla')
 	.post(function(req, res) {
 		var fbdata={};
 		// console.log(req.body);
-	/*if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
+	if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
 		fbdata={
     "attachment":{
       "type":"template",
@@ -82,6 +82,7 @@ router.route('/toadibatla')
           }
         ]
       }
+      }
     };
 		
 			res.json({
@@ -91,7 +92,7 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
-	}*/
+	}else{
 	
   /* var fbdata = {
       attachment: {
@@ -199,6 +200,7 @@ router.route('/toadibatla')
 });
 		//	res.json(bears);
 		}).limit(100);
+	}
 	/*	var bear = new Bear();		// create a new instance of the Bear model
 		bear.name = req.body.name;  // set the bears name (comes from the request)
 console.log(req.body.name);
