@@ -94,25 +94,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.resolvedQuery === "FROM_ADIBATLA_BUS"){
 	fbdata={
-    "attachment":{
-      "type":"template",
-      "payload":{
-        "template_type":"button",
-        "text":"Please choose one of the option?",
-        "buttons":[
-          {
-            "type":"postback",
-            "title":"From Adibatla",
-            "payload":"FROM_ADIBATLA_BUS"
-          },
-          {
-            "type":"postback",
-            "title":"To Adibatla",
-            "payload":"TO_ADIBATLA_BUS"
-          }
-        ]
-      }
-      }
+  	"text":"hello, world!"
     };
 		
 		res.json({
