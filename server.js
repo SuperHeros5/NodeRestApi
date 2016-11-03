@@ -60,9 +60,38 @@ router.route('/toadibatla')
 
 	// create a bear (accessed at POST http://localhost:8080/api/bears)
 	.post(function(req, res) {
-		
+		var fbdata={};
 		// console.log(req.body);
-	
+	if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
+		fbdata={
+    "attachment":{
+      "type":"template",
+      "payload":{
+        "template_type":"button",
+        "text":"Please choose one of the option?",
+        "buttons":[
+          {
+            "type":"postback",
+            "title":"From Adibatla",
+            "payload":"FROM_ADIBATLA_BUS"
+          },
+          {
+            "type":"postback",
+            "title":"To Adibatla",
+            "payload":"TO_ADIBATLA_BUS"
+          }
+        ]
+      }
+    };
+		
+			res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"contextOut": [],
+"source": "MongoDb"
+});
+	}
 	
   /* var fbdata = {
       attachment: {
@@ -164,7 +193,7 @@ router.route('/toadibatla')
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},req.body.result.resolvedQuery,{"sender_action":"TYPING_OFF"}]},
+"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
