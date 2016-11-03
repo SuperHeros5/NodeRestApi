@@ -94,7 +94,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.resolvedQuery === "FROM_ADIBATLA_BUS"){
 	fbdata={
-  	"text":"hello, world!"
+  	"text":"Enter your destination"
     };
 		
 		res.json({
