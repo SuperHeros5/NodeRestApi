@@ -148,8 +148,8 @@ router.route('/toadibatla')
 "source": "MongoDb"
 });
 		});
-		}else{
-		
+		}
+	}
 		fbdata={
   	"text":"We don't have that stop.Please try with another stop"
     };
@@ -160,7 +160,7 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
-		}	
+			
 	}
 	else{
 		
