@@ -165,11 +165,11 @@ router.route('/toadibatla')
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
 "data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
+"contextOut": [req.body],
 "source": "MongoDb"
 });
 		//	res.json(bears);
-		});
+		}).limit(100);
 	/*	var bear = new Bear();		// create a new instance of the Bear model
 		bear.name = req.body.name;  // set the bears name (comes from the request)
 console.log(req.body.name);
