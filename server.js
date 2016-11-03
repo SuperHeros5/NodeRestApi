@@ -92,8 +92,31 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
+	}else if(req.body.result.resolvedQuery === "FROM_ADIBATLA_BUS"){
+	fbdata={
+  	"text":"Enter your destination"
+  };
+		res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"contextOut": [],
+"source": "MongoDb"
+});
+	}
+	else if(req.body.result.resolvedQuery === "TO_ADIBATLA_BUS"){
+	fbdata={
+  	"text":"Enter your location"
+  };
+		res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"contextOut": [],
+"source": "MongoDb"
+});
 	}else{
-	
+		
   /* var fbdata = {
       attachment: {
         type: "template",
