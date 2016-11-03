@@ -94,7 +94,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.resolvedQuery === "FROM_ADIBATLA_BUS"){
 	fbdata={
-  	"text":"Enter your destination followed by -bus (eg:madhapur-bus)"
+  	"text":"Enter your destination preceded by fromo-(eg:from-madhapur)"
     };
 		
 		res.json({
@@ -107,7 +107,7 @@ router.route('/toadibatla')
 	}
 	else if(req.body.result.resolvedQuery === "TO_ADIBATLA_BUS"){
 	fbdata={
-  	"text":"Enter your location followed by -bus (eg:madhapur-bus)"
+  	"text":"Enter your location preceded by to-(eg:to-madhapur)"
   };
 		res.json({
 "speech": "Buses to Adibatla",
@@ -116,9 +116,42 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
-	}else if(req.body.result.parameters.any != ""){
+	}else if(req.body.result.parameters.busstops != "" && req.body.result.parameters.flag != ""){
+		
+		if(req.body.result.parameters.flag === "to"){
+			Bear.toadi.findOne({ "place" : req.body.result.parameters.busstops}, function(err, bear) {
+			if (err)
+				res.send(err);
+				fbdata={
+  	"text":"Landmark"+bear.landmark
+    };
+			res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"contextOut": [],
+"source": "MongoDb"
+});
+		});
+		}else if(req.body.result.parameters.flag === "from"){
+			Bear.fromadi.findOne({ "place" : req.body.result.parameters.busstops}, function(err, bear) {
+			if (err)
+				res.send(err);
+				fbdata={
+  	"text":"Landmark"+bear.landmark
+    };
+			res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"contextOut": [],
+"source": "MongoDb"
+});
+		});
+		}
+		
 		fbdata={
-  	"text":"Entered bus"+req.body.result.parameters.any
+  	"text":"We don't have that stop.Please try with another stop"
     };
 	res.json({
 "speech": "Buses to Adibatla",
