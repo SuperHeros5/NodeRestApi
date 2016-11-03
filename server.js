@@ -62,7 +62,7 @@ router.route('/toadibatla')
 	.post(function(req, res) {
 		var fbdata={};
 		// console.log(req.body);
-	if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
+	/*if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
 		fbdata={
     "attachment":{
       "type":"template",
@@ -91,7 +91,7 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
-	}
+	}*/
 	
   /* var fbdata = {
       attachment: {
@@ -193,7 +193,7 @@ router.route('/toadibatla')
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},req.body.result,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
