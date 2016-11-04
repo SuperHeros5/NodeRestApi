@@ -98,13 +98,9 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			fbdata={
-  	"text":"Entered from stop"
+  	"text":"Entered from stop"+bear
     };
-		});
-	
-		/*fbdata={
-  	"text":"Entered from stop"+ req.body.result.parameters.fromstop
-    };*/
+		
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
@@ -112,6 +108,11 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
+		});
+	
+		/*fbdata={
+  	"text":"Entered from stop"+ req.body.result.parameters.fromstop
+    };*/
 	}else if(req.body.result.parameters.tostop){
 		
 		Bear.toadi.findOne({ "place" : req.body.result.parameters.tostop}, function(err, bear) {
@@ -121,19 +122,15 @@ router.route('/toadibatla')
 			fbdata={
   	"text":"Entered to stop"+bear.landmark
     };
-		});
-		
-	fbdata={
-  	"text":"Entered to stop"+ req.body.result.parameters.tostop
-    };
-		
-		res.json({
+			res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
 "data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
+		});
+	
 	}
 	
 	else{
