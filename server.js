@@ -99,12 +99,12 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			fbdata=[{
-  	"text":"Timings Busroutes"
+  	"text":"Timings Busroute Numberss"
     }];
 		
 		bear.timings.forEach((timing)=>{
 		
-		fbdata1.push({"text":timing.time+" "+getRoute(timing.routes)});
+		fbdata1.push({"text":timing.time+"  "+getRoute(timing.routes)});
 		
 		});
 		
@@ -128,12 +128,12 @@ router.route('/toadibatla')
 				res.send(err);
 			
 			fbdata=[{
-  	"text":"Timings Busroutes"
+  	"text":"Timings Busroute Numbers"
     }];
 		
 		bear.timings.forEach((timing)=>{
 		
-		fbdata1.push({"text":timing.time+" "+getRoute(timing.routes)});
+		fbdata1.push({"text":timing.time+"  "+getRoute(timing.routes)});
 		
 		});
 			res.json({
