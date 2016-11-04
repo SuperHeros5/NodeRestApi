@@ -98,8 +98,9 @@ router.route('/toadibatla')
 	Bear.fromadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
 			if (err)
 				res.send(err);
+		if(bear != null){
 			fbdata=[{
-  	"text":"Timings Busroute Numberss"
+  	"text":"Timings  BusNumbers"
     }];
 		
 		bear.timings.forEach((timing)=>{
@@ -108,6 +109,11 @@ router.route('/toadibatla')
 		
 		});
 		
+		}else{
+		fbdata=[{
+  	"text":"Try with any other location nearby"
+    }];	
+		}
 		
 		res.json({
 "speech": "Buses to Adibatla",
@@ -126,7 +132,7 @@ router.route('/toadibatla')
 		Bear.toadi.findOne({ "place" : req.body.result.parameters.tostop}, function(err, bear) {
 			if (err)
 				res.send(err);
-			
+			if(bear != null){
 			fbdata=[{
   	"text":"Timings Busroute Numbers"
     }];
@@ -136,6 +142,11 @@ router.route('/toadibatla')
 		fbdata1.push({"text":timing.time+"  "+getRoute(timing.routes)});
 		
 		});
+			}else{
+			fbdata=[{
+  	"text":"Try with any other location nearby"
+    }];		
+			}
 			res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
