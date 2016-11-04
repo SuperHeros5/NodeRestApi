@@ -104,7 +104,7 @@ router.route('/toadibatla')
 		
 		bear.timings.forEach((timing)=>{
 		
-		fbdata1.push({"text":timing.time});
+		fbdata1.push({"text":timing.time+" "+getRoute(timing.routes)});
 		
 		});
 		
@@ -133,7 +133,7 @@ router.route('/toadibatla')
 		
 		bear.timings.forEach((timing)=>{
 		
-		fbdata1.push({"text":timing.time});
+		fbdata1.push({"text":timing.time+" "+getRoute(timing.routes)});
 		
 		});
 			res.json({
@@ -311,7 +311,13 @@ console.log(req.body.name);
 		}).skip(100).limit(100);
 	});
 
-
+function getRoute(routes){
+	var routeappend="";
+	routes.forEach((route)=>{
+	routeappend=routeappend+","+route;
+	});
+	return routeappend
+}
 
 // on routes that end in /bears/:bear_id
 // ----------------------------------------------------
