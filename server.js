@@ -102,7 +102,9 @@ router.route('/toadibatla')
     };
 		});
 	
-		
+		fbdata={
+  	"text":"Entered from stop"+ req.body.result.parameters.fromstop
+    };
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
@@ -115,7 +117,7 @@ router.route('/toadibatla')
 		Bear.toadi.findOne({ "place" : req.body.result.parameters.tostop}, function(err, bear) {
 			if (err)
 				res.send(err);
-			res.json(bear);
+			
 			fbdata={
   	"text":"Entered to stop"+bear.landmark
     };
