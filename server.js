@@ -104,9 +104,9 @@ router.route('/toadibatla')
 		
 		bear.timings.forEach((timing)=>{
 		
-		fbdata1.push({"text":timing.time+" "+timing.routes.forEach((route)=>return route)});
+		fbdata1.push({"text":timing.time});
 		
-		})
+		});
 		
 		
 		res.json({
