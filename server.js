@@ -94,7 +94,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.parameters.fromstop){
 		
-		Bear.fromadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
+	Bear.fromadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
 			if (err)
 				res.send(err);
 			fbdata={
@@ -124,7 +124,7 @@ router.route('/toadibatla')
 		});
 		
 	fbdata={
-  	"text":"Entered to stop"+ req.body.result.parameters.fromstop
+  	"text":"Entered to stop"+ req.body.result.parameters.tostop
     };
 		
 		res.json({
