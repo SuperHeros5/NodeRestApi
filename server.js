@@ -94,9 +94,14 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.parameters.fromstop){
 		
-	fbdata={
-  	"text":"Entered from stop"+req.body.result.parameters.fromstop
+		Bear.fromadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
+			if (err)
+				res.send(err);
+			fbdata={
+  	"text":"Entered from stop"+bear.landmark
     };
+		});
+	
 		
 		res.json({
 "speech": "Buses to Adibatla",
@@ -106,9 +111,17 @@ router.route('/toadibatla')
 "source": "MongoDb"
 });
 	}else if(req.body.result.parameters.tostop){
-	fbdata={
-  	"text":"Entered from stop"+req.body.result.parameters.tostop
+		
+		Bear.toadi.findOne({ "place" : req.body.result.parameters.tostop}, function(err, bear) {
+			if (err)
+				res.send(err);
+			res.json(bear);
+			fbdata={
+  	"text":"Entered to stop"+bear.landmark
     };
+		});
+		
+	
 		
 		res.json({
 "speech": "Buses to Adibatla",
