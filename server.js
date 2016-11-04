@@ -315,11 +315,11 @@ function getRoute(routes){
 	var routeappend="";
 	routes.forEach((route,index)=>{
 	routeappend=routeappend+route;
-		if(index != routes.length()){
+		if(index != routes.length){
 			routeappend=routeappend+",";
 		}
 	});
-	return routeappend
+	return routeappend;
 }
 
 // on routes that end in /bears/:bear_id
