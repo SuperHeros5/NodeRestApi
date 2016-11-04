@@ -99,11 +99,15 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			fbdata=[{
-  	"text":"Timings Busroutes"+bear.timings[0].time
+  	"text":"Timings Busroutes"
     }];
-		fbdata1=[{
-  	"text":"Timings Busrout"
-    }];
+		
+		bear.timings.forEach((timing)=>{
+		
+		fbdata1.push({"text":timing.time+" "+timing.routes.forEach((route)=>return route)});
+		
+		})
+		
 		
 		res.json({
 "speech": "Buses to Adibatla",
@@ -126,6 +130,7 @@ router.route('/toadibatla')
 			fbdata=[{
   	"text":"Entered to stop"+bear.landmark
     }];
+			
 			res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
