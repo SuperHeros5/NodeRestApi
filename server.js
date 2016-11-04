@@ -61,6 +61,7 @@ router.route('/toadibatla')
 	// create a bear (accessed at POST http://localhost:8080/api/bears)
 	.post(function(req, res) {
 		var fbdata={};
+		var fbdata1={};
 		// console.log(req.body);
 	if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
 		fbdata={
@@ -98,13 +99,16 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			fbdata={
-  	"text":"Entered from stop"+bear
+  	"text":"Timings Busroutes"+bear.timings[0].time
+    };
+		fbdata1={
+  	"text":"Timings Busrout"
     };
 		
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,fbdata1,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
