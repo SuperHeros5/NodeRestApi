@@ -98,7 +98,7 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			fbdata={
-  	"text":"Entered from stop"+bear.landmark
+  	"text":"Entered from stop"
     };
 		});
 	
