@@ -60,11 +60,11 @@ router.route('/toadibatla')
 
 	// create a bear (accessed at POST http://localhost:8080/api/bears)
 	.post(function(req, res) {
-		var fbdata={};
-		var fbdata1={};
+		var fbdata=[];
+		var fbdata1=[];
 		// console.log(req.body);
 	if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
-		fbdata={
+		fbdata=[{
     "attachment":{
       "type":"template",
       "payload":{
@@ -84,7 +84,7 @@ router.route('/toadibatla')
         ]
       }
       }
-    };
+    }];
 		
 			res.json({
 "speech": "Buses to Adibatla",
@@ -98,12 +98,12 @@ router.route('/toadibatla')
 	Bear.fromadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
 			if (err)
 				res.send(err);
-			fbdata={
+			fbdata=[{
   	"text":"Timings Busroutes"+bear.timings[0].time
-    };
-		fbdata1={
+    }];
+		fbdata1=[{
   	"text":"Timings Busrout"
-    };
+    }];
 		
 		res.json({
 "speech": "Buses to Adibatla",
@@ -123,9 +123,9 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			
-			fbdata={
+			fbdata=[{
   	"text":"Entered to stop"+bear.landmark
-    };
+    }];
 			res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
@@ -227,7 +227,7 @@ router.route('/toadibatla')
           }
 		);
 		console.log(list);
-		var fbdata = {
+		var fbdata = [{
       attachment: {
         type: "template",
         payload: {
@@ -235,7 +235,7 @@ router.route('/toadibatla')
           elements: list
         }
       }
-    };
+    }];
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
