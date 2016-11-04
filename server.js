@@ -313,8 +313,11 @@ console.log(req.body.name);
 
 function getRoute(routes){
 	var routeappend="";
-	routes.forEach((route)=>{
-	routeappend=routeappend+","+route;
+	routes.forEach((route,index)=>{
+	routeappend=routeappend+route;
+		if(index != routes.length()){
+			routeappend=routeappend+",";
+		}
 	});
 	return routeappend
 }
