@@ -123,7 +123,9 @@ router.route('/toadibatla')
     };
 		});
 		
-	
+	fbdata={
+  	"text":"Entered to stop"+ req.body.result.parameters.fromstop
+    };
 		
 		res.json({
 "speech": "Buses to Adibatla",
