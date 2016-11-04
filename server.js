@@ -315,7 +315,7 @@ function getRoute(routes){
 	var routeappend="";
 	routes.forEach((route,index)=>{
 	routeappend=routeappend+route;
-		if(index != routes.length){
+		if(index != (routes.length-1)){
 			routeappend=routeappend+",";
 		}
 	});
