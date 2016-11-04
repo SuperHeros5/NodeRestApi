@@ -102,9 +102,9 @@ router.route('/toadibatla')
     };
 		});
 	
-		fbdata={
+		/*fbdata={
   	"text":"Entered from stop"+ req.body.result.parameters.fromstop
-    };
+    };*/
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
