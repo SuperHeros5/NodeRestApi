@@ -128,13 +128,18 @@ router.route('/toadibatla')
 				res.send(err);
 			
 			fbdata=[{
-  	"text":"Entered to stop"+bear.landmark
+  	"text":"Timings Busroutes"
     }];
-			
+		
+		bear.timings.forEach((timing)=>{
+		
+		fbdata1.push({"text":timing.time});
+		
+		});
 			res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,fbdata1,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
