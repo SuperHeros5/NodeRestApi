@@ -73,12 +73,12 @@ router.route('/toadibatla')
           {
             "type":"postback",
             "title":"From Adibatla",
-            "payload":"FROM_ADIBATLA_BUS"
+            "payload":"FROMADIBATLA"
           },
           {
             "type":"postback",
             "title":"To Adibatla",
-            "payload":"TO_ADIBATLA_BUS"
+            "payload":"TOADIBATLA"
           }
         ]
       }
@@ -92,9 +92,22 @@ router.route('/toadibatla')
 "contextOut": [],
 "source": "MongoDb"
 });
-	}else if(req.body.result.resolvedQuery === "FROM_ADIBATLA_BUS"){
+	}else if(req.body.result.parameters.fromstop){
+		
 	fbdata={
-  	"text":"Enter your destination preceded by fromo-(eg:from-madhapur)"
+  	"text":"Entered from stop"+req.body.result.parameters.fromstop
+    };
+		
+		res.json({
+"speech": "Buses to Adibatla",
+"displayText": "Buses to Adibatla",
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
+"contextOut": [],
+"source": "MongoDb"
+});
+	}else if(req.body.result.parameters.tostop){
+	fbdata={
+  	"text":"Entered from stop"+req.body.result.parameters.tostop
     };
 		
 		res.json({
@@ -105,63 +118,7 @@ router.route('/toadibatla')
 "source": "MongoDb"
 });
 	}
-	else if(req.body.result.resolvedQuery === "TO_ADIBATLA_BUS"){
-	fbdata={
-  	"text":"Enter your location preceded by to-(eg:to-madhapur)"
-  };
-		res.json({
-"speech": "Buses to Adibatla",
-"displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
-"source": "MongoDb"
-});
-	}else if(req.body.result.parameters.any != "" && req.body.result.parameters.flag != ""){
-		
-		if(req.body.result.parameters.flag === "to"){
-			Bear.toadi.findOne({ "place" : req.body.result.parameters.any}, function(err, bear) {
-			if (err)
-				res.send(err);
-				fbdata={
-  	"text":"Landmark"+bear.landmark
-    };
-			res.json({
-"speech": "Buses to Adibatla",
-"displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
-"source": "MongoDb"
-});
-		});
-		}else if(req.body.result.parameters.flag === "from"){
-			Bear.fromadi.findOne({ "place" : req.body.result.parameters.any}, function(err, bear) {
-			if (err)
-				res.send(err);
-				fbdata={
-  	"text":"Landmark"+bear.landmark
-    };
-			res.json({
-"speech": "Buses to Adibatla",
-"displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
-"source": "MongoDb"
-});
-		});
-		}
 	
-		fbdata={
-  	"text":"We don't have that stop.Please try with another stop"
-    };
-	res.json({
-"speech": "Buses to Adibatla",
-"displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
-"source": "MongoDb"
-});
-			
-	}
 	else{
 		
   /* var fbdata = {
