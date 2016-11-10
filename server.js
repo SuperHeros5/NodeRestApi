@@ -105,7 +105,7 @@ router.route('/toadibatla')
 		
 		bear.timings.forEach((timing)=>{
 		
-		fbdata1.push({"text":timing.time+"  "+getRoute(timing.routes)});
+		fbdata.push({"text":timing.time+"  "+getRoute(timing.routes)});
 		
 		});
 		
@@ -118,7 +118,7 @@ router.route('/toadibatla')
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,fbdata1,{"sender_action":"TYPING_OFF"}]},
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
@@ -139,7 +139,7 @@ router.route('/toadibatla')
 		
 		bear.timings.forEach((timing)=>{
 		
-		fbdata1.push({"text":timing.time+"  "+getRoute(timing.routes)});
+		fbdata.push({"text":timing.time+"  "+getRoute(timing.routes)});
 		
 		});
 			}else{
@@ -150,7 +150,7 @@ router.route('/toadibatla')
 			res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,fbdata1,{"sender_action":"TYPING_OFF"}]},
+"data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
