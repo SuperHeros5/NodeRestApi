@@ -95,7 +95,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.parameters.fromstop){
 		
-	Bear.toadi.findOne({ "place" : { $regex: /req.body.result.parameters.fromstop/, $options: 'i' }}, function(err, bear) {
+	Bear.toadi.findOne({ "place" :  new RegExp('^'+req.body.result.parameters.fromstop, "i")}, function(err, bear) {
 			if (err)
 				res.send(err);
 		if(bear != null){
@@ -129,7 +129,7 @@ router.route('/toadibatla')
     };*/
 	}else if(req.body.result.parameters.tostop){
 		
-		Bear.fromadi.findOne({ "place" : req.body.result.parameters.tostop}, function(err, bear) {
+		Bear.fromadi.findOne({ "place" :  new RegExp('^'+req.body.result.parameters.tostop, "i")}, function(err, bear) {
 			if (err)
 				res.send(err);
 			if(bear != null){
