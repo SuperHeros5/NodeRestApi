@@ -99,9 +99,11 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 		if(bear != null){
-			fbdata=[{
-  	"text":"Timings  BusNumbers"
-    }];
+			fbdata=[{"text":req.body.result.parameters.fromstop+" to Adibatla"}];
+			fbdata.push({"text":"Landmark: "+bear.landmark});
+			fbdata.push({"text":"Timings  BusNumbers"});
+		
+			
 		
 		bear.timings.forEach((timing)=>{
 		
@@ -133,9 +135,9 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			if(bear != null){
-			fbdata=[{
-  	"text":"Timings Busroute Numbers"
-    }];
+			fbdata=[{"text":"Adibatla to "+req.body.result.parameters.tostop}];
+			fbdata.push({"text":"Landmark: "+bear.landmark});
+			fbdata.push({"text":"Timings  BusNumbers"});
 		
 		bear.timings.forEach((timing)=>{
 		
