@@ -95,7 +95,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.parameters.fromstop){
 		
-	Bear.toadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
+	Bear.toadi.findOne({ "place" : /req.body.result.parameters.fromstop/i }, function(err, bear) {
 			if (err)
 				res.send(err);
 		if(bear != null){
