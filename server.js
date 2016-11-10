@@ -95,7 +95,7 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.parameters.fromstop){
 		
-	Bear.fromadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
+	Bear.toadi.findOne({ "place" : req.body.result.parameters.fromstop}, function(err, bear) {
 			if (err)
 				res.send(err);
 		if(bear != null){
@@ -129,7 +129,7 @@ router.route('/toadibatla')
     };*/
 	}else if(req.body.result.parameters.tostop){
 		
-		Bear.toadi.findOne({ "place" : req.body.result.parameters.tostop}, function(err, bear) {
+		Bear.fromadi.findOne({ "place" : req.body.result.parameters.tostop}, function(err, bear) {
 			if (err)
 				res.send(err);
 			if(bear != null){
