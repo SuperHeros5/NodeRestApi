@@ -99,7 +99,7 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 		if(bear != null){
-			fbdata=[{"text":req.body.result.parameters.fromstop+" to Adibatla"}];
+			fbdata.push({"text":req.body.result.parameters.fromstop+" to Adibatla"});
 			fbdata.push({"text":"Landmark: "+bear.landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
 		
@@ -135,7 +135,7 @@ router.route('/toadibatla')
 			if (err)
 				res.send(err);
 			if(bear != null){
-			fbdata=[{"text":"Adibatla to "+req.body.result.parameters.tostop}];
+			fbdata.push({"text":"Adibatla to "+req.body.result.parameters.tostop});
 			fbdata.push({"text":"Landmark: "+bear.landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
 		
