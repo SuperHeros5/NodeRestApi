@@ -134,7 +134,7 @@ router.route('/toadibatla')
 			}
 		}else{
 		fbdata=[{
-  	"text":"Try with any other location nearby"
+  	"text":"Please check the spelling or the above route is not covered"
     }];	
 		}
 		
@@ -188,7 +188,7 @@ router.route('/toadibatla')
 			}
 				}else{
 			fbdata=[{
-  	"text":"Try with any other location nearby"
+  	"text":"Please check the spelling or the above route is not covered"
     }];		
 			}
 			res.json({
