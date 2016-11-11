@@ -115,7 +115,7 @@ router.route('/toadibatla')
 			      "type":"template",
 			      "payload":{
 				"template_type":"button",
-				"text":"Do you really mean?",
+				"text":"Did you mean?",
 				"buttons":buttonarray
 			      }
 			      }
@@ -169,7 +169,7 @@ router.route('/toadibatla')
 			      "type":"template",
 			      "payload":{
 				"template_type":"button",
-				"text":"Do you really mean?",
+				"text":"Did you mean?",
 				"buttons":buttonarray
 			      }
 			      }
