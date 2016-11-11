@@ -101,13 +101,33 @@ router.route('/toadibatla')
 		if(bear != null){
 			
 			if(bear.length>1){
-				
+				var buttonarray=[];
+				for(var i=0;i<bear.length;i++){
+				if(i === 3){break;}
+				buttonarray.push({
+				 "type":"postback",
+				    "title": bear[i].place,
+				    "payload":"TOADIBATLA "+bear[i].place
+				});
+				}
+			fbdata.push({
+			    "attachment":{
+			      "type":"template",
+			      "payload":{
+				"template_type":"button",
+				"text":"Do you really mean?",
+				"buttons":buttonarray
+			      }
+			      }
+			    });
+
 			}else{
 	                fbdata.push({"text": bear.place+" to Adibatla"});
 			fbdata.push({"text":"Landmark: "+bear.landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
 		        bear.timings.forEach((timing)=>{
 		        fbdata.push({"text":timing.time+"  "+getRoute(timing.routes)});
+			});
 			}
 		
 		}else{
