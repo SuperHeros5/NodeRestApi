@@ -127,7 +127,6 @@ router.route('/toadibatla')
 		        bear.timings.forEach((timing)=>{
 		        fbdata.push({"text":timing.time+"  "+getRoute(timing.routes)});
 			}
-		});
 		
 		}else{
 		fbdata=[{
