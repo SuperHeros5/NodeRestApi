@@ -80,7 +80,12 @@ router.route('/toadibatla')
             "type":"postback",
             "title":"To Adibatla",
             "payload":"TOADIBATLA"
-          }
+          },
+	   {
+              "type": "web_url",
+              "url": "www.adibatlatransportation.com",
+              "title": "click to visit the site"
+            }
         ]
       }
       }
