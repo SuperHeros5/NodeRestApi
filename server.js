@@ -129,20 +129,44 @@ router.route('/toadibatla')
 	
 	}else if(req.body.result.parameters.tostop){
 		
-		Bear.fromadi.findOne({ "place" :  new RegExp('^'+req.body.result.parameters.tostop, "i")}, function(err, bear) {
+		Bear.fromadi.find({ "place" :  new RegExp('^'+req.body.result.parameters.tostop, "i")}, function(err, bear) {
 			if (err)
 				res.send(err);
-			if(bear != null){
-			fbdata.push({"text":"Adibatla to "+bear.place});
-			fbdata.push({"text":"Landmark: "+bear.landmark});
+				if(bear.length > 0){
+			  
+			if(bear.length>1){
+				var buttonarray=[];
+				for(var i=0;i<bear.length;i++){
+				if(i === 3){break;}
+				buttonarray.push({
+				 "type":"postback",
+				    "title": bear[i].place,
+				    "payload":"TOADIBATLA "+bear[i].place
+				});
+				}
+			fbdata.push({
+			    "attachment":{
+			      "type":"template",
+			      "payload":{
+				"template_type":"button",
+				"text":"Do you really mean?",
+				"buttons":buttonarray
+			      }
+			      }
+			    });
+
+			}else{
+			fbdata.push({"text":"Adibatla to "+bear[0].place});
+			fbdata.push({"text":"Landmark: "+bear[0].landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
 		
-		bear.timings.forEach((timing)=>{
+		bear[0].timings.forEach((timing)=>{
 		
-		fbdata.push({"text":timing.time+"  "+getRoute(timing.routes)});
+		fbdata.push({"text":timing.time});
 		
 		});
-			}else{
+			}
+				}else{
 			fbdata=[{
   	"text":"Try with any other location nearby"
     }];		
