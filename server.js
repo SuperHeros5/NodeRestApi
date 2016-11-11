@@ -104,9 +104,12 @@ router.route('/toadibatla')
 	                fbdata.push({"text": bear.place+" to Adibatla"});
 			fbdata.push({"text":"Landmark: "+bear.landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
-		        bear.timings.forEach((timing)=>{
-		        fbdata.push({"text":timing.time+"  "+getRoute(timing.routes)});
-			});
+		      
+		bear.timings.forEach((timing)=>{
+		
+		fbdata.push({"text":timing.time+"  "+getRoute(timing.routes)});
+		
+		});
 			}
 		
 		}else{
