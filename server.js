@@ -122,13 +122,13 @@ router.route('/toadibatla')
 			    });
 
 			}else{
-			fbdata.push({"text":"Adibatla to "+bear[0].place});
+			fbdata.push({"text":bear[0].place+" to Adibatla"});
 			fbdata.push({"text":"Landmark: "+bear[0].landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
 		
 		bear[0].timings.forEach((timing)=>{
 		
-		fbdata.push({"text":timing.time});
+		fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
 		
 		});
 			}
@@ -182,7 +182,7 @@ router.route('/toadibatla')
 		
 		bear[0].timings.forEach((timing)=>{
 		
-		fbdata.push({"text":timing.time});
+		fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
 		
 		});
 			}
