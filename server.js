@@ -69,7 +69,7 @@ router.route('/toadibatla')
       "type":"template",
       "payload":{
         "template_type":"button",
-        "text":"Please choose one of the option?",
+        "text":"Which busroute details do you want to know?",
         "buttons":[
           {
             "type":"postback",
@@ -78,13 +78,13 @@ router.route('/toadibatla')
           },
           {
             "type":"postback",
-            "title":"To Adibatla",
+            "title":"To Office",
             "payload":"TOADIBATLA"
           },
 	   {
               "type": "web_url",
               "url": "www.adibatlatransportation.com",
-              "title": "click to visit the site"
+              "title": "visit the site"
             }
         ]
       }
