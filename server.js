@@ -62,6 +62,7 @@ router.route('/toadibatla')
 	.post(function(req, res) {
 		var fbdata=[];
 		var fbdata1=[];
+		var context=[];
 		// console.log(req.body);
 	if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
 		fbdata=[{
@@ -141,13 +142,14 @@ router.route('/toadibatla')
 		fbdata=[{
   	"text":"Please check the spelling or the above route is not covered"
     }];	
+		context =  [{"name":"correctfrombusstop", "lifespan":2, "parameters":{"fromstop":req.body.result.parameters.fromstop}}];
 		}
 		
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
 "data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
+"contextOut": context,
 "source": "MongoDb"
 });
 		});
@@ -195,12 +197,13 @@ router.route('/toadibatla')
 			fbdata=[{
   	"text":"Please check the spelling or the above route is not covered"
     }];		
+		context =  [{"name":"correcttobusstop", "lifespan":1, "parameters":{"tostop":req.body.result.parameters.tostop}}];
 			}
 			res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
 "data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
+"contextOut": context,
 "source": "MongoDb"
 });
 		});
