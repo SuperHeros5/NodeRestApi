@@ -140,9 +140,9 @@ router.route('/toadibatla')
 			}
 		}else{
 		fbdata=[{
-  	"text":"Please check the spelling or the above route is not covered"
+  	"text":"Please check the spelling of "+req.body.result.parameters.fromstop+" or enter any other location nearby"
     }];	
-		context =  [{"name":"correctfrombusstop", "lifespan":2, "parameters":{"fromstop":req.body.result.parameters.fromstop}}];
+		context =  [{"name":"correctfrombusstop", "lifespan":0, "parameters":{"fromstop":req.body.result.parameters.fromstop}}];
 		}
 		
 		res.json({
@@ -195,9 +195,9 @@ router.route('/toadibatla')
 			}
 				}else{
 			fbdata=[{
-  	"text":"Please check the spelling or the above route is not covered"
+  	"text":"Please check the spelling of "+req.body.result.parameters.tostop+" or enter any other location nearby"
     }];		
-		context =  [{"name":"correcttobusstop", "lifespan":1, "parameters":{"tostop":req.body.result.parameters.tostop}}];
+		context =  [{"name":"correcttobusstop", "lifespan":0, "parameters":{"tostop":req.body.result.parameters.tostop}}];
 			}
 			res.json({
 "speech": "Buses to Adibatla",
