@@ -110,6 +110,16 @@ router.route('/toadibatla')
 				var buttonarray=[];
 				for(var i=0;i<bear.length;i++){
 				if(i === 3){break;}
+				if(bear[i].place === req.body.result.parameters.fromstop){
+					fbdata.push({"text":bear[i].place+" to Adibatla"});
+					fbdata.push({"text":"Landmark: "+bear[i].landmark});
+					fbdata.push({"text":"Timings  BusNumbers"});
+		
+					bear[i].timings.forEach((timing)=>{
+		
+					fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
+				   break;
+				   }
 				buttonarray.push({
 				 "type":"postback",
 				    "title": bear[i].place,
@@ -165,6 +175,16 @@ router.route('/toadibatla')
 				var buttonarray=[];
 				for(var i=0;i<bear.length;i++){
 				if(i === 3){break;}
+					if(bear[i].place === req.body.result.parameters.tostop){
+					fbdata.push({"text":bear[i].place+" to Adibatla"});
+					fbdata.push({"text":"Landmark: "+bear[i].landmark});
+					fbdata.push({"text":"Timings  BusNumbers"});
+		
+					bear[i].timings.forEach((timing)=>{
+		
+					fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
+				   break;
+				   }
 				buttonarray.push({
 				 "type":"postback",
 				    "title": bear[i].place,
