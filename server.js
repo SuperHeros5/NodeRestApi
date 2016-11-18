@@ -361,7 +361,7 @@ console.log(req.body.name);
 	 // console.log(Bear.toadi);
 	 // res.send(	Bear.toadi);
 	 // res.send("err");
-	 	var buses=[];
+	 	var buseslist=[];
 	 	Bus.toadi.find({},'place',function(err, buses) {
 		  //res.send("err"); 
 			if (err)
@@ -370,9 +370,9 @@ console.log(req.body.name);
 		//	res.json(bears);
 		
 			for(var i in buses ){
-			  buses.push(buses[i].place)
+			  buseslist.push(buses[i].place)
 			}
-			console.log(buses);
+			console.log(buseslist);
 			//res.json(buses);
 		}).limit(100);
 		Bus.toadi.find({},'place',function(err, buses) {
@@ -383,10 +383,10 @@ console.log(req.body.name);
 			//res.json(bears);
 			
 			for(var i in buses ){
-			  buses.push(buses[i].place)
+			  buseslist.push(buses[i].place)
 			}
 			console.log(buses);
-			res.json(buses.sort());
+			res.json(buseslist.sort());
 		}).skip(100).limit(100);
 	});
 
