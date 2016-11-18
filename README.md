@@ -11,6 +11,18 @@ I have been working with TCS for the past 3 years across different locations. Re
 
 So, we have come up with a web application where associates can search for busroute details in friendly manner on their favourite device from anywhere and at anytime.
 
+
+We are also working on facebook chatbot to furthur make it more interactive and human friendly.
+
+
+
+Developed and hosted website of adibatla transportation using the latest technologies(MEAN stack).
+
+Working on facebook ChatBot for the same application using api.ai machine learning technology and facebook apis.
+
+
+
+"Never stop learning because life never stops teaching" -- unknown
 Using this API you can access all the bus details.
 
 Prerequisites
@@ -58,3 +70,5 @@ Contributors
 If you face any issues or any improvements you can raise an issue. Someone in our team responds to it as quickly as possible.
 
 Good luck and happy coding.
+
+abhishek.seth@tcs.com , rajendra.biswal@tcs.com and Digi.Phonics@tcs.com 
