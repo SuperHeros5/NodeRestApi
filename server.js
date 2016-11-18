@@ -37,8 +37,8 @@ var router = express.Router();
 router.use(function(req, res, next) {
 	// do logging
 	res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	console.log('Something is happening.');
+ 	 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	console.log('Request received');
 	next();
 });
 
@@ -48,11 +48,11 @@ router.get('/', function(req, res) {
 	res.json({ message: 'hooray! welcome to our api!' });	
 });
 
-// on routes that end in /bears
+// on routes that end in /toadibatla
 // ----------------------------------------------------
 router.route('/toadibatla')
 
-	// create a bear (accessed at POST http://localhost:8080/api/bears)
+	//  (accessed at POST http://localhost:8080/api/bears)
 	.post(function(req, res) {
 		var fbdata=[];
 		var fbdata1=[];
@@ -227,45 +227,6 @@ router.route('/toadibatla')
 	}
 	
 	else{
-		
-  /* var fbdata = {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: "rift",
-            subtitle: "Next-generation virtual reality",
-            item_url: "https://www.oculus.com/en-us/rift/",               
-            image_url: "http://messengerdemo.parseapp.com/img/rift.png",
-            buttons: [{
-              type: "web_url",
-              url: "https://www.oculus.com/en-us/rift/",
-              title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
-            }],
-          }, {
-            title: "touch",
-            subtitle: "Your Hands, Now in VR",
-            item_url: "https://www.oculus.com/en-us/touch/",               
-            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
-            buttons: [{
-              type: "web_url",
-              url: "https://www.oculus.com/en-us/touch/",
-              title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for second bubble",
-            }]
-          }]
-        }
-      }
-    };
-    console.log(req.body);*/
     	Bus.toadi.find(function(err, buses) {
     	  
 		var elements = buses;
@@ -335,25 +296,7 @@ router.route('/toadibatla')
 		//	res.json(bears);
 		}).limit(100);
 	}
-	/*	var bear = new Bear();		// create a new instance of the Bear model
-		bear.name = req.body.name;  // set the bears name (comes from the request)
-console.log(req.body.name);
-		bear.save(function(err) {
-			if (err)
-				res.send(err);
-
-			res.json({ message: 'Bear created!' });
-		});*/
-	//res.json({ message: 'Bear created!' });
-		
-	/*	res.json({
-"speech": "Barack Hussein Obama II is the 44th and current President of the United States.",
-"displayText": "Barack Hussein Obama II is the 44th and current President of the United States, and the first African American to hold the office. Born in Honolulu, Hawaii, Obama is a graduate of Columbia University   and Harvard Law School, where ",
-"data": {data},
-"contextOut": [],
-"source": "DuckDuckGo"
-});*/
-
+	
 	})
 
 	// get all the bears (accessed at GET http://localhost:8080/api/bears)
@@ -401,7 +344,7 @@ function getRoute(routes){
 	return routeappend;
 }
 
-// on routes that end in /bears/:bear_id
+// on routes that end in /toadibatla/:bear_id
 // ----------------------------------------------------
 router.route('/toadibatla/:bear_id')
 
