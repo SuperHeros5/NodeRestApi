@@ -57,7 +57,6 @@ router.route('/toadibatla')
 		var fbdata=[];
 		var fbdata1=[];
 		var context=[];
-		// console.log(req.body);
 	if(req.body.result.resolvedQuery === "GETTING_STARTED_BUS"){
 		fbdata=[{
     "attachment":{
@@ -227,83 +226,13 @@ router.route('/toadibatla')
 	}
 	
 	else{
-    	Bus.toadi.find(function(err, buses) {
-    	  
-		var elements = buses;
-		var list=[];
-			if (err)
-				res.send(err);
-		//console.log(elements);
-	for (var i in buses) {
-  console.log(buses[i]);
-  
-  var oneelemnt ={
-    buses : buses[i],
-    title: "place "+(buses[i].place),
-            subtitle: (buses[i].landmark),              
-             item_url: "https://www.oculus.com/en-us/rift/", 
-            image_url: "http://messengerdemo.parseapp.com/img/touch.png",
-            buttons: [{
-              type: "web_url",
-              title: "From Adibatla",
-              url: "http://messengerdemo.parseapp.com/img/touch.png",
-              webview_height_ratio: "tall",
-	            payload: "fromadibatla"    
-            }, {
-              type: "postback",
-              title: "To Adibatla",
-              payload: "toadibatla"
-            }]
-          };
-          
-          if(list.length < 6){
-	list.push(oneelemnt);
-          }
-}
-		list.push({
-            title: "rift",
-            subtitle: "Next-generation virtual reality",
-            item_url: "https://www.oculus.com/en-us/rift/",               
-            image_url: "http://messengerdemo.parseapp.com/img/rift.png",
-            buttons: [{
-              type: "web_url",
-              url: "https://www.oculus.com/en-us/rift/",
-              title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
-            }],
-          }
-		);
-		console.log(list);
-		var fbdata = [{
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: list
-        }
-      }
-    }];
-		res.json({
-"speech": "Buses to Adibatla",
-"displayText": "Buses to Adibatla",
-"data": {buses,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},req.body.result,{"sender_action":"TYPING_OFF"}]},
-"contextOut": [],
-"source": "MongoDb"
-});
-		//	res.json(bears);
-		}).limit(100);
+    	
 	}
 	
 	})
 
-	// get all the bears (accessed at GET http://localhost:8080/api/bears)
+	// get all the buses (accessed at GET http://localhost:8080/api/toadibatla)
 	.get(function(req, res) {
-	 // console.log(Bear.toadi);
-	 // res.send(	Bear.toadi);
-	 // res.send("err");
 	 	var buseslist=[];
 	 	Bus.toadi.find({},'place',function(err, buses) {
 		  //res.send("err"); 
@@ -333,6 +262,25 @@ router.route('/toadibatla')
 		}).skip(100).limit(100);
 	});
 
+// on routes that end in /toadibatla/:busstop
+// ----------------------------------------------------
+router.route('/toadibatla/:busstop')
+	// get the busroute with that busstop
+	.get(function(req, res) {
+		Bus.toadi.findOne({ "place" : req.params.busstop}, function(err, buses) {
+			if (err)
+				res.send(err);
+			res.json(buses);
+		});
+	});
+router.route('/fromadibatla/:busstop')
+	.get(function(req, res) {
+		Bus.fromadi.findOne({ "place" : req.params.busstop}, function(err, buses) {
+			if (err)
+				res.send(err);
+			res.json(buses);
+		});
+	});
 function getRoute(routes){
 	var routeappend="";
 	routes.forEach((route,index)=>{
@@ -343,61 +291,6 @@ function getRoute(routes){
 	});
 	return routeappend;
 }
-
-// on routes that end in /toadibatla/:bear_id
-// ----------------------------------------------------
-router.route('/toadibatla/:bear_id')
-
-	// get the bear with that id
-	.get(function(req, res) {
-	  //res.send(req.params.bear_id);
-		Bus.toadi.findOne({ "place" : req.params.bear_id}, function(err, buses) {
-			if (err)
-				res.send(err);
-			res.json(buses);
-		});
-	})
-
-	// update the bear with this id
-	.put(function(req, res) {
-		Bus.toadi.findById(req.params.bear_id, function(err, buses) {
-
-			if (err)
-				res.send(err);
-
-			buses.name = req.body.name;
-			buses.save(function(err) {
-				if (err)
-					res.send(err);
-
-				res.json({ message: 'Bear updated!' });
-			});
-
-		});
-	})
-
-	// delete the bear with this id
-	.delete(function(req, res) {
-		Bus.toadi.remove({
-			_id: req.params.bear_id
-		}, function(err, buses) {
-			if (err)
-				res.send(err);
-
-			res.json({ message: 'Successfully deleted' });
-		});
-	});
-
-router.route('/fromadibatla/:bear_id')
-	.get(function(req, res) {
-	  //res.send(req.params.bear_id);
-	 
-		Bus.fromadi.findOne({ "place" : req.params.bear_id}, function(err, buses) {
-			if (err)
-				res.send(err);
-			res.json(buses);
-		});
-	});
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
