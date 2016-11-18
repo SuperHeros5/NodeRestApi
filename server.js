@@ -52,7 +52,7 @@ router.get('/', function(req, res) {
 // ----------------------------------------------------
 router.route('/toadibatla')
 
-	//  (accessed at POST http://localhost:8080/api/bears)
+	//  (accessed at POST http://localhost:8080/api/toadibatla)
 	.post(function(req, res) {
 		var fbdata=[];
 		var fbdata1=[];
