@@ -14,25 +14,19 @@ app.use(morgan('dev')); // log requests to the console
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 8080; // set our port
-console.log(port);
+var port     =  process.env.PORT || 8080; // set our port
 console.log(port);
 var mongoose   = require('mongoose');
-
 mongoose.connect('mongodb://siva:siva@ds015335.mlab.com:15335/busroutes'); // connect to our database
 var conn = mongoose.connection; 
 conn.on('error', console.error.bind(console, 'connection error:'));  
- 
 conn.once('open', function() {
   // Wait for the database connection to establish, then start the app.  
   console.log(mongoose.connection.readyState);
 });
-
 console.log(mongoose.connection.readyState);
-var Bear     = require('./bear');
-console.log(port);
-console.log(port);
-//console.log(Bear.toadi);
+var Bus     = require('./busschema');
+
 // ROUTES FOR OUR API
 // =============================================================================
 
@@ -101,21 +95,21 @@ router.route('/toadibatla')
 });
 	}else if(req.body.result.parameters.fromstop){
 		
-	Bear.toadi.find({ "place" :  new RegExp('^'+req.body.result.parameters.fromstop, "i")}, function(err, bear) {
+	Bus.toadi.find({ "place" :  new RegExp('^'+req.body.result.parameters.fromstop, "i")}, function(err, buses) {
 			if (err)
 				res.send(err);
-			if(bear.length > 0){
+			if(buses.length > 0){
 			  
-			if(bear.length>1){
+			if(buses.length>1){
 				var buttonarray=[];
-				for(var i=0;i<bear.length;i++){
+				for(var i=0;i<buses.length;i++){
 				if(i === 3){break;}
-				if(bear[i].place === req.body.result.parameters.fromstop){
-					fbdata.push({"text":bear[i].place+" to Adibatla"});
-					fbdata.push({"text":"Landmark: "+bear[i].landmark});
+				if(buses[i].place === req.body.result.parameters.fromstop){
+					fbdata.push({"text":buses[i].place+" to Adibatla"});
+					fbdata.push({"text":"Landmark: "+buses[i].landmark});
 					fbdata.push({"text":"Timings  BusNumbers"});
 		
-					bear[i].timings.forEach((timing)=>{
+					buses[i].timings.forEach((timing)=>{
 		
 					fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
 					});
@@ -123,8 +117,8 @@ router.route('/toadibatla')
 				   }
 				buttonarray.push({
 				 "type":"postback",
-				    "title": bear[i].place,
-				    "payload":"TOADIBATLA "+bear[i].place
+				    "title": buses[i].place,
+				    "payload":"TOADIBATLA "+buses[i].place
 				});
 				}
 			fbdata.push({
@@ -139,11 +133,11 @@ router.route('/toadibatla')
 			    });
 
 			}else{
-			fbdata.push({"text":bear[0].place+" to Adibatla"});
-			fbdata.push({"text":"Landmark: "+bear[0].landmark});
+			fbdata.push({"text":buses[0].place+" to Adibatla"});
+			fbdata.push({"text":"Landmark: "+buses[0].landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
 		
-		bear[0].timings.forEach((timing)=>{
+		buses[0].timings.forEach((timing)=>{
 		
 		fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
 		
@@ -167,21 +161,21 @@ router.route('/toadibatla')
 	
 	}else if(req.body.result.parameters.tostop){
 		
-		Bear.fromadi.find({ "place" :  new RegExp('^'+req.body.result.parameters.tostop, "i")}, function(err, bear) {
+		Bus.fromadi.find({ "place" :  new RegExp('^'+req.body.result.parameters.tostop, "i")}, function(err, buses) {
 			if (err)
 				res.send(err);
-				if(bear.length > 0){
+				if(buses.length > 0){
 			  
-			if(bear.length>1){
+			if(buses.length>1){
 				var buttonarray=[];
-				for(var i=0;i<bear.length;i++){
+				for(var i=0;i<buses.length;i++){
 				if(i === 3){break;}
-					if(bear[i].place === req.body.result.parameters.tostop){
-					fbdata.push({"text":"Adibatla to "+bear[i].place});
-					fbdata.push({"text":"Landmark: "+bear[i].landmark});
+					if(buses[i].place === req.body.result.parameters.tostop){
+					fbdata.push({"text":"Adibatla to "+buses[i].place});
+					fbdata.push({"text":"Landmark: "+buses[i].landmark});
 					fbdata.push({"text":"Timings  BusNumbers"});
 		
-					bear[i].timings.forEach((timing)=>{
+					buses[i].timings.forEach((timing)=>{
 		
 					fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
 						});
@@ -189,8 +183,8 @@ router.route('/toadibatla')
 				   }
 				buttonarray.push({
 				 "type":"postback",
-				    "title": bear[i].place,
-				    "payload":"FROMADIBATLA "+bear[i].place
+				    "title": buses[i].place,
+				    "payload":"FROMADIBATLA "+buses[i].place
 				});
 				}
 			fbdata.push({
@@ -205,11 +199,11 @@ router.route('/toadibatla')
 			    });
 
 			}else{
-			fbdata.push({"text":"Adibatla to "+bear[0].place});
-			fbdata.push({"text":"Landmark: "+bear[0].landmark});
+			fbdata.push({"text":"Adibatla to "+buses[0].place});
+			fbdata.push({"text":"Landmark: "+buses[0].landmark});
 			fbdata.push({"text":"Timings  BusNumbers"});
 		
-		bear[0].timings.forEach((timing)=>{
+		buses[0].timings.forEach((timing)=>{
 		
 		fbdata.push({"text":timing.time+" "+getRoute(timing.routes)});
 		
@@ -272,20 +266,20 @@ router.route('/toadibatla')
       }
     };
     console.log(req.body);*/
-    	Bear.toadi.find(function(err, bears) {
+    	Bus.toadi.find(function(err, buses) {
     	  
-		var elements = bears;
+		var elements = buses;
 		var list=[];
 			if (err)
 				res.send(err);
 		//console.log(elements);
-	for (var i in bears) {
-  console.log(bears[i]);
+	for (var i in buses) {
+  console.log(buses[i]);
   
   var oneelemnt ={
-    bear : bears[i],
-    title: "place "+(bears[i].place),
-            subtitle: (bears[i].landmark),              
+    buses : buses[i],
+    title: "place "+(buses[i].place),
+            subtitle: (buses[i].landmark),              
              item_url: "https://www.oculus.com/en-us/rift/", 
             image_url: "http://messengerdemo.parseapp.com/img/touch.png",
             buttons: [{
@@ -334,7 +328,7 @@ router.route('/toadibatla')
 		res.json({
 "speech": "Buses to Adibatla",
 "displayText": "Buses to Adibatla",
-"data": {bears,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},req.body.result,{"sender_action":"TYPING_OFF"}]},
+"data": {buses,"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},req.body.result,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
 "source": "MongoDb"
 });
@@ -368,28 +362,28 @@ console.log(req.body.name);
 	 // res.send(	Bear.toadi);
 	 // res.send("err");
 	 	var buses=[];
-	 	Bear.toadi.find({},'place',function(err, bears) {
+	 	Bus.toadi.find({},'place',function(err, buses) {
 		  //res.send("err"); 
 			if (err)
 				res.send(err);
 
 		//	res.json(bears);
 		
-			for(var i in bears ){
-			  buses.push(bears[i].place)
+			for(var i in buses ){
+			  buses.push(buses[i].place)
 			}
 			console.log(buses);
 			//res.json(buses);
 		}).limit(100);
-		Bear.toadi.find({},'place',function(err, bears) {
+		Bus.toadi.find({},'place',function(err, buses) {
 		  //res.send("err"); 
 			if (err)
 				res.send(err);
 
 			//res.json(bears);
 			
-			for(var i in bears ){
-			  buses.push(bears[i].place)
+			for(var i in buses ){
+			  buses.push(buses[i].place)
 			}
 			console.log(buses);
 			res.json(buses.sort());
@@ -414,22 +408,22 @@ router.route('/toadibatla/:bear_id')
 	// get the bear with that id
 	.get(function(req, res) {
 	  //res.send(req.params.bear_id);
-		Bear.toadi.findOne({ "place" : req.params.bear_id}, function(err, bear) {
+		Bus.toadi.findOne({ "place" : req.params.bear_id}, function(err, buses) {
 			if (err)
 				res.send(err);
-			res.json(bear);
+			res.json(buses);
 		});
 	})
 
 	// update the bear with this id
 	.put(function(req, res) {
-		Bear.toadi.findById(req.params.bear_id, function(err, bear) {
+		Bus.toadi.findById(req.params.bear_id, function(err, buses) {
 
 			if (err)
 				res.send(err);
 
-			bear.name = req.body.name;
-			bear.save(function(err) {
+			buses.name = req.body.name;
+			buses.save(function(err) {
 				if (err)
 					res.send(err);
 
@@ -441,9 +435,9 @@ router.route('/toadibatla/:bear_id')
 
 	// delete the bear with this id
 	.delete(function(req, res) {
-		Bear.toadi.remove({
+		Bus.toadi.remove({
 			_id: req.params.bear_id
-		}, function(err, bear) {
+		}, function(err, buses) {
 			if (err)
 				res.send(err);
 
@@ -455,10 +449,10 @@ router.route('/fromadibatla/:bear_id')
 	.get(function(req, res) {
 	  //res.send(req.params.bear_id);
 	 
-		Bear.fromadi.findOne({ "place" : req.params.bear_id}, function(err, bear) {
+		Bus.fromadi.findOne({ "place" : req.params.bear_id}, function(err, buses) {
 			if (err)
 				res.send(err);
-			res.json(bear);
+			res.json(buses);
 		});
 	});
 
