@@ -22,14 +22,14 @@ Prerequisites
 Installation
 ============
 
-#-Clone this repo or download the zip file 
-#-Open the project and open command prompt from this location
-#-Run the command "npm install"
-#-It installs all the necessary dependencies
-#-Then run the command "npm start" which starts the server
-#-Test the server by hitting the url "http://localhost:8080/api" in the browser which should return a JSON message 
-#{ message: 'hooray! welcome to our api!' }
-#-That's it you are ready to test and experiment
+-Clone this repo or download the zip file 
+-Open the project and open command prompt from this location
+-Run the command "npm install"
+-It installs all the necessary dependencies
+-Then run the command "npm start" which starts the server
+-Test the server by hitting the url "http://localhost:8080/api" in the browser which should return a JSON message 
+{ message: 'hooray! welcome to our api!' }
+-That's it you are ready to test and experiment
 
 Sample requests and responses
 ==============================
