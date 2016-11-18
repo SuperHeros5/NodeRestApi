@@ -1,25 +1,60 @@
-  Welcome to the HyperDev BETA
-============================
+Adibatla Transportation busroute details API
+============================================
 
-Click `"Show"` in the header to see your app live. Updates to your code will instantly deploy and update live.
-
-HyperDev is a developer playground that lets you code a real web-app without the slow setup and deployment steps. 
+This is a REST based API runs on node server and using this you can access the details of busroute numbers,timings and landmarks which comes to adibatla office.
 
 
-Your Project
-------------
+Motivation
+==========
 
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env`
+I have been working with TCS for the past 3 years across different locations. Recently I have been moved to new TCS office(Adibatla Hyderabad) which is far away from the city where there is no public transportation. As of now TCS is providing free bus transportation connecting almost all the parts of the city, the details of the buses are shared to associates every week through mails in pdf format. It could be very difficult for the associates to go through that long pdf to find the bus details especially when they are in a hurry to catch the bus. I personally faced this situation.
 
-On the front-end,
-- edit `client.js`, `style.css` and `index.html`
-- drag in `assets`, like images or music, to add them to your project
+So, we have come up with a web application where associates can search for busroute details in friendly manner on their favourite device from anywhere and at anytime.
 
+Using this API you can access all the bus details.
 
-Made by Fog Creek
------------------
+Prerequisites
+=============
 
-\ ゜o゜)ノ
+-Latest node and npm should be installed in your PC
+-Check the successful installation of node and npm by running node -v and npm -v in command prompt
+
+Installation
+============
+
+-Clone this repo or download the zip file 
+-Open the project and open command prompt from this location
+-Run the command "npm install"
+-It installs all the necessary dependencies
+-Then run the command "npm start" which starts the server
+-Test the server by hitting the url "http://localhost:8080/api" in the browser which should return a JSON message 
+{ message: 'hooray! welcome to our api!' }
+-That's it you are ready to test and experiment
+
+Sample requests and responses
+==============================
+
+To access all the busstops covered
+----------------------------------
+GET request---https://nodeapi.herokuapp.com/api/toadibatla
+It returns data of all the busstops in json format
+response:
+
+To access buses details at a particular stop going towards office(Adibatla)
+---------------------------------------------------------------------------
+GET request---https://nodeapi.herokuapp.com/api/toadibatla/<bussotp>
+It returns data of all the buses passing through the requested <busstop> 
+response:
+
+To access buses details at a particular stop going from office(Adibatla)
+---------------------------------------------------------------------------
+GET request---https://nodeapi.herokuapp.com/api/fromadibatla/<bussotp>
+It returns data of all the buses passing through the requested <busstop> 
+response:
+
+Contributors
+============
+
+If you face any issues or any improvements you can raise an issue. Someone in our team responds to it as quickly as possible.
+
+Good luck and happy coding.
