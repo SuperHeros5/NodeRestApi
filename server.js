@@ -86,11 +86,11 @@ router.route('/toadibatla')
     }];
 		
 			res.json({
-"speech": "Buses to Adibatla",
-"displayText": "Buses to Adibatla",
+"speech": "Getting started",
+"displayText": "Getting started",
 "data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
 "contextOut": [],
-"source": "MongoDb"
+"source": "MongoDB"
 });
 	}else if(req.body.result.parameters.fromstop){
 		
@@ -150,11 +150,11 @@ router.route('/toadibatla')
 		}
 		
 		res.json({
-"speech": "Buses to Adibatla",
-"displayText": "Buses to Adibatla",
+"speech": "Buses from Adibatla",
+"displayText": "Buses from Adibatla",
 "data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
 "contextOut": context,
-"source": "MongoDb"
+"source": "MongoDB"
 });
 		});
 	
@@ -219,7 +219,7 @@ router.route('/toadibatla')
 "displayText": "Buses to Adibatla",
 "data": {"facebook": [{"sender_action":"MARK_SEEN"},{"sender_action":"TYPING_ON"},fbdata,{"sender_action":"TYPING_OFF"}]},
 "contextOut": context,
-"source": "MongoDb"
+"source": "MongoDB"
 });
 		});
 	
