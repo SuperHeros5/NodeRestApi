@@ -270,7 +270,12 @@ router.route('/toadibatla/:busstop')
 		Bus.toadi.findOne({ "place" : req.params.busstop}, function(err, buses) {
 			if (err)
 				res.send(err);
-			res.json(buses);
+			if(buses != null){
+			  res.json(buses);
+			   }else{
+			res.json({"message":"Busstop not found"});	   
+			   }
+			
 		});
 	});
 router.route('/fromadibatla/:busstop')
@@ -278,7 +283,11 @@ router.route('/fromadibatla/:busstop')
 		Bus.fromadi.findOne({ "place" : req.params.busstop}, function(err, buses) {
 			if (err)
 				res.send(err);
-			res.json(buses);
+			if(buses != null){
+			  res.json(buses);
+			   }else{
+			res.json({"message":"Busstop not found"});	   
+			   }
 		});
 	});
 function getRoute(routes){
