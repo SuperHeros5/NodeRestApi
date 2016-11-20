@@ -267,7 +267,7 @@ router.route('/toadibatla')
 router.route('/toadibatla/:busstop')
 	// get the busroute with that busstop
 	.get(function(req, res) {
-		Bus.toadi.findOne({ "place" : req.params.busstop}, function(err, buses) {
+		Bus.toadi.findOne({ "place" :  new RegExp('^'+req.params.busstop, "i")}, function(err, buses) {
 			if (err)
 				res.send(err);
 			if(buses != null){
@@ -280,7 +280,7 @@ router.route('/toadibatla/:busstop')
 	});
 router.route('/fromadibatla/:busstop')
 	.get(function(req, res) {
-		Bus.fromadi.findOne({ "place" : req.params.busstop}, function(err, buses) {
+		Bus.fromadi.findOne({ "place" : new RegExp('^'+req.params.busstop, "i")}, function(err, buses) {
 			if (err)
 				res.send(err);
 			if(buses != null){
