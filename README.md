@@ -38,23 +38,23 @@ Sample requests and responses
 To access all the busstops covered
 ----------------------------------
 GET request---http://localhost:8080/api/toadibatla  (if run in local)
-              https://<appname>.herokuapp.com/api/toadibatla  (if hosted in heroku)
+              https://appname.herokuapp.com/api/toadibatla  (if hosted in heroku)
 It returns data of all the busstops in json format
 response:
 
 To access buses details at a particular stop going towards office(Adibatla)
 ---------------------------------------------------------------------------
-GET request---http://localhost:8080/api/toadibatla/<bussotp>  (if run in local)
-              https://<appname>.herokuapp.com/api/toadibatla/<bussotp>   (if hosted in heroku)
+GET request---http://localhost:8080/api/toadibatla/bussotp  (if run in local)
+              https://appname.herokuapp.com/api/toadibatla/bussotp (if hosted in heroku)
 
-It returns data of all the buses passing through the requested <busstop> 
+It returns data of all the buses passing through the requested busstop
 response:
 
 To access buses details at a particular stop going from office(Adibatla)
 -------------------------------------------------------------------------- -
-GET request---http://localhost:8080/api/fromadibatla/<bussotp>   (if run in local)
-              https://<appname>.herokuapp.com/api/fromadibatla/<bussotp>   (if hosted in heroku)
-It returns data of all the buses passing through the requested <busstop> 
+GET request---http://localhost:8080/api/fromadibatla/bussotp  (if run in local)
+              https://appname.herokuapp.com/api/fromadibatla/bussotp  (if hosted in heroku)
+It returns data of all the buses passing through the requested busstop 
 response:
 
 Contributors
